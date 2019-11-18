@@ -4,7 +4,11 @@ Convert between rc-switch-codes and their logical (human-readable!) representati
 At the time of writing this this is the only tool that allows this conversion, 
 which is absolutely ridiculous considering the wide usage of these libraries.
 
-TODO: refer to libs that need this tool
+TODO: refer to more libs that need this tool
+- https://github.com/ninjablocks/433Utils
+- https://github.com/sui77/rc-switch
+- https://github.com/milaq/rpi-rf
+
 
 I'm assuming default pulselengths and protocols here (pulselength 308, protocol 1), 
 I don't have any other devices to test against.
