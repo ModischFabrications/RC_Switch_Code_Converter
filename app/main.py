@@ -9,10 +9,12 @@ from app.data.DipCode import DipCode
 
 def parse_args() -> Tuple[int, str]:
     parser = argparse.ArgumentParser(description="Convert between common code formats for 433 MHz socket libraries")
-    parser.add_argument("-d", "--decimal", type=int,
+    group = parser.add_mutually_exclusive_group(required=True)
+
+    group.add_argument("-d", "--decimal", type=int,
                         help="Input Decimals, will be converted to switches, e.g.: 4457809")
-    parser.add_argument("-s", "--switches", type=str,
-                        help="DIP codes, will be converted to decimals. "
+    group.add_argument("-s", "--switches", type=str,
+                       help="DIP codes, will be converted to decimals. "
                              "Expects 'SYSTEM|DEVICE[|STATE]', e.g.: 01011|1 or 01011|1|1")
 
     args = parser.parse_args()
