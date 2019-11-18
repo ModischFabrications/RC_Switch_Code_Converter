@@ -14,7 +14,7 @@ matrix:
 
 install:
   # additional dependencies just for testing (mostly pytest)
-  - pip3 install -U -r dev-requirements.txt
+  - pip install -U -r dev-requirements.txt
 
 script:
   # python -m appends current path to PYTHONPATH, pytest would not find app.model
