@@ -12,6 +12,8 @@ jobs:
         - choco install python --version 3.7
         - python -m pip install --upgrade pip
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+      # Tests are done below, I'm just checking if building actually works
+      script: pipenv pyInstaller --onefile app\main.py
 
 install:
   # additional dependencies just for testing
@@ -21,5 +23,5 @@ install:
 script:
   # python -m appends current path to PYTHONPATH, pytest would not find app.model
   # it's important to use absolute paths in test files for both files and modules
-  - python -m pytest
+  - pipenv run python -m pytest
 
