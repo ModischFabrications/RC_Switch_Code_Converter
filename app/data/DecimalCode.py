@@ -11,8 +11,8 @@ class DecimalCode:
 
     def assert_valid(self):
         # TODO: extend with proper tests (how?)
-        if not self.code > 4:
-            raise SyntaxError(f"Code [{self.code}] is invalid")
+        if not (type(self.code) == int and self.code > 4):
+            raise SyntaxError(f"Code [{self.code}] is invalid, int expected")
 
     def __str__(self) -> str:
         return f"{self.code}"

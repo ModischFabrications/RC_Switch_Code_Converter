@@ -15,9 +15,11 @@ class DipCode:
 
     def assert_valid(self):
         if not system_pattern.match(self.system):
-            raise SyntaxError(f"System code [{self.system}] is invalid")
-        if not self.device > 0 and self.device <= 5:
-            raise SyntaxError(f"device code [{self.device}] is invalid")
+            raise SyntaxError(f"System code [{self.system}] is invalid, str expected")
+        if not (type(self.device) == int and 0 < self.device <= 5):
+            raise SyntaxError(f"device code [{self.device}] is invalid, int expected")
+        if not type(self.state) == bool:
+            raise SyntaxError(f"state [{self.state}] is invalid, bool expected")
 
     def __str__(self) -> str:
         return f"{self.system}, {self.device}, {int(self.state)}"
