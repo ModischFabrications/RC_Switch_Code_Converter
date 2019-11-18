@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class DecimalCode:
     # could be a str instead
     code: int
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         return f"{self.code}"
