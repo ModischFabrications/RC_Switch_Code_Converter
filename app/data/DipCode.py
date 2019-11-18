@@ -2,14 +2,12 @@ import re
 from dataclasses import dataclass
 
 system_pattern = re.compile('[01]{5}')
-device_pattern = re.compile('[1-5]')
-
 
 @dataclass(frozen=True)
 class DipCode:
     # couldn't be represented as ints because of leading 0
     system: str
-    device: str
+    device: int
     state: bool
 
     def __post_init__(self):
@@ -18,7 +16,7 @@ class DipCode:
     def assert_valid(self):
         if not system_pattern.match(self.system):
             raise SyntaxError(f"System code [{self.system}] is invalid")
-        if not device_pattern.match(self.device):
+        if not self.device > 0 and self.device <= 5:
             raise SyntaxError(f"device code [{self.device}] is invalid")
 
     def __str__(self) -> str:

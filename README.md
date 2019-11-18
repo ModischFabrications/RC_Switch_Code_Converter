@@ -22,7 +22,7 @@ Sockets used: Brennenstuhl RCS 1000SN, very easy and generic device with DIPs fo
 rpi-rf-code-format: AAAA ABBB BBCC (24 bits)
 
 A: System code, inverted
-B: unit code, inverted
+B: unit code as bit position counted from left & inverted
 C: ON = 01; OFF = 10
 
 Pad with 0 on every second position (starting with pos 0).
@@ -44,8 +44,8 @@ SYS, DEV        RECEIVED        REC (BIN)
 "11010", 1" OFF: 279892     -> 0000 0100 0100 0101 0101 0100‬ -> 044554
 
 ### calculated (and correct!):
-"01010", 5" ON: 4478273     -> 0100 0100 0101 0101 0100 0001
-"01010", 5" OFF: 4478276‬    -> 0100 0100 0101 0101 0100 0100
+"01010", 5", ON  -> 0100 0100 0101 0101 0100 0001 -> 4478273
+"01010", 5", OFF -> 0100 0100 0101 0101 0100 0100 -> 4478276‬
 
 ## Other implementations
 https://github.com/HeptaSean/SocketPi/blob/master/socket_switch.py

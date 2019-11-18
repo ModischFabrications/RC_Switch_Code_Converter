@@ -10,7 +10,7 @@ def test_decimal_code_init():
 
 
 def test_dip_code_init():
-    dip = DipCode("10101", "1", True)
+    dip = DipCode("10101", 1, True)
 
     assert dip is not None
     assert str(dip) == "10101, 1, 1"
