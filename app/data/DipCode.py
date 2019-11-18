@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class DipCode:
-    # could be represented as ints but why?
+    # couldn't be represented as ints because of leading 0
     system: str
     device: str
     state: bool
