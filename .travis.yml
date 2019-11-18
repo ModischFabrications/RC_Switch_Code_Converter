@@ -14,7 +14,7 @@ matrix:
 
 install:
   # additional dependencies just for testing (mostly pytest)
-  - pip install pipenv
+  - pip3 install pipenv
   - pipenv install --dev
 
 script:
