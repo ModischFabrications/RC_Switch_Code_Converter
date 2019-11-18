@@ -1,7 +1,8 @@
 from app.data.DecimalCode import DecimalCode
 from app.data.DipCode import DipCode
 
-d_state = {True: "01", False: "10"}
+state_to_code = {True: "01", False: "10"}
+code_to_state = {v: k for k, v in state_to_code.items()}
 
 
 def to_decimal(dip_code: DipCode) -> DecimalCode:
@@ -13,7 +14,7 @@ def to_decimal(dip_code: DipCode) -> DecimalCode:
     mirrored_lpad_device_bits = lpad_device_bits[::-1]
     inverted_device = _invert(mirrored_lpad_device_bits)
 
-    state = d_state[dip_code.state]
+    state = state_to_code[dip_code.state]
 
     concat = inverted_system + inverted_device + state
     binary = _pad_with_zeros(concat)
@@ -54,5 +55,15 @@ def _invert(bits: str) -> str:
 
 def to_dip(decimal_code: DecimalCode) -> DipCode:
     binary = bin(decimal_code.code)
+    cleaned_binary = binary.lstrip("0b").zfill(24)
+    stripped_binary = _strip_zeros(cleaned_binary)
 
-    return DipCode("10101", 1, True)
+    system = _invert(stripped_binary[0:5])
+
+    device_bits = _invert(stripped_binary[5:10])
+    device = device_bits.index("1") + 1
+
+    status_bits = stripped_binary[10:12]
+    status = code_to_state[status_bits]
+
+    return DipCode(system, device, status)
