@@ -1,4 +1,7 @@
 # RC_Switch_Code_Converter
+
+[![Build Status](https://travis-ci.org/ModischFabrications/RC_Switch_Code_Converter.svg?branch=master)](https://travis-ci.org/ModischFabrications/RC_Switch_Code_Converter)
+
 Convert between rc-switch-codes and their logical (human-readable!) representations.
 
 At the time of writing this this is the only tool that allows this conversion, 

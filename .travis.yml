@@ -14,6 +14,12 @@ jobs:
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
       # Tests are done below, I'm just checking if building actually works
       script: pipenv run pyInstaller --onefile "app\main.py"
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        skip_cleanup: true
+        on:
+          tags: true
 
 install:
   # additional dependencies just for testing
